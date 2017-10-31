@@ -8,6 +8,7 @@ type MsgBuilder interface {
 	RemoveParam(key string)
 	GetParam(key string) interface{}
 }
+
 type AndroidMsgBuilder struct {
 	Title                  string                 `json:"title,omitempty"`
 	Description            string                 `json:"description"`
