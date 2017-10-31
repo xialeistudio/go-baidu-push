@@ -7,7 +7,7 @@ import (
 
 var client = NewClient(os.Getenv("APIKEY"), os.Getenv("SECRETKEY"), DeviceIOS)
 
-func TestClientExecute(t *testing.T) {
+func TestClientPushSingleDevice(t *testing.T) {
 	msg := &IOSMsgBuilder{
 		Aps: &IOSMsgAps{
 			Alert: "天气不错",
