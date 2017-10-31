@@ -1,5 +1,7 @@
 package baidu_push
 
+const BaseUrl = "https://api.tuisong.baidu.com"
+
 const (
 	DeviceAndroid = 3
 	DeviceIOS     = 4
