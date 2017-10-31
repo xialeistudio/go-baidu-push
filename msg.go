@@ -48,3 +48,49 @@ func (builder *AndroidMsgBuilder) GetParam(key string) interface{} {
 	}
 	return builder.CustomContent[key]
 }
+
+type IOSMsgAps struct {
+	Alert string `json:"alert"`
+	Sound string `json:"sound,omitempty"`
+	Badge int    `json:"badge,omitempty"`
+}
+type IOSMsgBuilder struct {
+	Aps    *IOSMsgAps
+	params map[string]interface{}
+}
+
+func (builder *IOSMsgBuilder) Build() (string, error) {
+	data := make(map[string]interface{})
+	data["aps"] = builder.Aps
+	if builder.params != nil {
+		for key, value := range builder.params {
+			data[key] = value
+		}
+	}
+	buf, err := json.Marshal(data)
+	if err != nil {
+		return "", err
+	}
+	return string(buf), err
+}
+
+func (builder *IOSMsgBuilder) AddParam(key string, value interface{}) {
+	if builder.params == nil {
+		builder.params = make(map[string]interface{})
+	}
+	builder.params[key] = value
+}
+
+func (builder *IOSMsgBuilder) RemoveParam(key string) {
+	if builder.params == nil {
+		return
+	}
+	delete(builder.params, key)
+}
+
+func (builder *IOSMsgBuilder) GetParam(key string) interface{} {
+	if builder.params == nil {
+		return nil
+	}
+	return builder.params[key]
+}
