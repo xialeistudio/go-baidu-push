@@ -61,14 +61,14 @@ func (c *Client) sendRequest(req *Request) (map[string]interface{}, error) {
 			values[key] = []string{strconv.FormatInt(v, 10)}
 		}
 	}
-	rawReq, err := http.NewRequest("POST", req.Url, strings.NewReader(values.Encode()))
+	httpReq, err := http.NewRequest("POST", req.Url, strings.NewReader(values.Encode()))
 	if err != nil {
 		return nil, err
 	}
-	rawReq.Header.Set("Content-Type", c.getContentType())
-	rawReq.Header.Set("User-Agent", c.getUserAgent())
+	httpReq.Header.Set("Content-Type", c.getContentType())
+	httpReq.Header.Set("User-Agent", c.getUserAgent())
 	client := &http.Client{}
-	res, err := client.Do(rawReq)
+	res, err := client.Do(httpReq)
 	if err != nil {
 		return nil, err
 	}
