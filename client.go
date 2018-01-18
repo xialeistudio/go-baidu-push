@@ -1,17 +1,17 @@
 package baidu_push
 
 import (
+	"crypto/md5"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"runtime"
 	"sort"
 	"strconv"
-	"crypto/md5"
-	"time"
-	"net/url"
-	"net/http"
 	"strings"
-	"io/ioutil"
-	"encoding/json"
+	"time"
 )
 
 type Client struct {
