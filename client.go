@@ -1,17 +1,17 @@
 package baidu_push
 
 import (
-	"crypto/md5"
 	"fmt"
-	"github.com/json-iterator/go"
-	"io/ioutil"
-	"net/http"
-	"net/url"
 	"runtime"
 	"sort"
 	"strconv"
-	"strings"
+	"crypto/md5"
 	"time"
+	"net/url"
+	"net/http"
+	"strings"
+	"io/ioutil"
+	"encoding/json"
 )
 
 type Client struct {
@@ -78,7 +78,6 @@ func (c *Client) sendRequest(req *Request) (map[string]interface{}, error) {
 		return nil, err
 	}
 	result := make(map[string]interface{})
-	json := jsoniter.ConfigCompatibleWithStandardLibrary
 	err = json.Unmarshal(buf, &result)
 	return result, err
 }

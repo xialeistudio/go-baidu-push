@@ -1,6 +1,6 @@
 package baidu_push
 
-import "github.com/json-iterator/go"
+import "encoding/json"
 
 type MsgBuilder interface {
 	Build() (string, error)
@@ -21,7 +21,6 @@ type AndroidMsgBuilder struct {
 }
 
 func (builder *AndroidMsgBuilder) Build() (string, error) {
-	json := jsoniter.ConfigCompatibleWithStandardLibrary
 	buf, err := json.Marshal(builder)
 	if err != nil {
 		return "", err
@@ -68,7 +67,6 @@ func (builder *IOSMsgBuilder) Build() (string, error) {
 			data[key] = value
 		}
 	}
-	json := jsoniter.ConfigCompatibleWithStandardLibrary
 	buf, err := json.Marshal(data)
 	if err != nil {
 		return "", err
