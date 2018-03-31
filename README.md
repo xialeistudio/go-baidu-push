@@ -1,7 +1,7 @@
 # Baidu-Push Golang SDK
 Developed with golang, no other dependencies. [official site](https://push.baidu.com)
 ## ATTENTION
-DO NOT TEST **PushAll* IN PRODUCTION ENVIRONMENT!!!
+DO NOT TEST **PushAll** IN PRODUCTION ENVIRONMENT!!!
 
 ## Features
 
